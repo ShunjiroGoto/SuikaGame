@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FollowTransform : MonoBehaviour
+    //このコードだけは開発時につまづいてしまったのでネットで調べてから引用しています。
+    //もちろんコードの内容を知らないと後に不具合が起きた際に対応できないのでコードリーディングを行ってから使用しています。
 {
     [SerializeField]
-    private Transform target; // �Ǐ]����Ώ�
+    private Transform target; // 追従する対象
     [SerializeField]
-    private Vector3 offset; // �I�t�Z�b�g�iWorld Space�̃I�t�Z�b�g�j
+    private Vector3 offset; // オフセット（World Spaceのオフセット）
     private RectTransform rectTransform;
 
     public void SetTarget(Transform target, Vector3 offset)
@@ -36,7 +38,7 @@ public class FollowTransform : MonoBehaviour
     {
         if (target)
         {
-            // World Position��Screen Position�ɕϊ�
+            // World PositionをScreen Positionに変換
             Vector2 screenPos = Camera.main.WorldToScreenPoint(target.position + offset);
             rectTransform.position = screenPos;
         }
